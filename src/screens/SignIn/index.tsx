@@ -4,7 +4,7 @@ import background from "../../../assets/background.png";
 import fundo from "../../../assets/fundo.png";
 import { Container, Title, Logo, Form, TitleWrapper } from "./style";
 import { TextInput } from "../../../components/Input";
-import { KeyboardAvoidingView } from "react-native";
+import { Button } from "../../../components/Button";
 
 export function SignIn() {
   const [username, setUsername] = useState("");
@@ -28,7 +28,8 @@ export function SignIn() {
       </TitleWrapper>
       <Form>
         <TextInput placeholder="USUARIO" />
-        <TextInput placeholder="PASSWORD" />
+        <TextInput placeholder="PASSWORD" secureTextEntry/>
+        <Button title="Entrar"/>
       </Form>
     </Container>
   );
