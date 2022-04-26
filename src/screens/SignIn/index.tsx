@@ -1,8 +1,8 @@
 import { View, Text, Image } from "react-native";
 import React, { useState } from "react";
 import background from "../../../assets/background.png";
-import { Container, InputArea, Title, Logo, EntryText } from "./style";
-import { Teste } from "../../../components/style";
+import { Container, Title, Logo } from "./style";
+import { TextInput } from "../../../components/Input";
 
 export function SignIn() {
   const [username, setUsername] = useState("");
@@ -10,20 +10,11 @@ export function SignIn() {
 
   return (
     <Container>
-    {/*   <Image source={background} resizeMode="contain" /> */}
+    {/*   <Image source={background} resizeMode="cover" /> */}
       <Logo>ioasys</Logo>
       <Title>Books</Title>
-      <Teste
-        placeholder="USERNAME"
-        value={username}
-        onChangeText={setUsername}
-      />
-       <Teste
-        placeholder="PASSWORD"
-        value={password}
-        onChangeText={setPassword}
-      />
-
+      <TextInput placeholder="USUARIO" />
+      <TextInput placeholder="PASSWORD" />
     </Container>
   );
 }

@@ -4,13 +4,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color:red ;
-`;
-
-export const InputArea = styled.View`
-
-  background-color: white;
-  align-items: center;
+  background-color:${({theme}) => theme.colors.black100};
 `;
 
 export const Title = styled.Text`
@@ -21,31 +15,23 @@ export const Title = styled.Text`
   left: 30%;
   top: 32.81%;
   color: white;
-
-  /* width: 77px;
-height: 40px;
-left: 137px;
-top: 208px; */
-
-  font-size: 20px;
-  font-weight: 300;
+  font-family: ${({theme}) => theme.fonts.light};
   font-size: 28px;
-  line-height: 40px;
-  font-style: normal;
 `;
 
 export const Logo = styled.Text`
   position: absolute;
   left: 5%;
-  right: 62.38%;
+/*   right: 62.38%; */
   top: 32.81%;
-  bottom: 61.56%;
+  /* bottom: 61.56%; */
   color: white;
   font-size: 20px;
   font-weight: 300;
   font-size: 28px;
   line-height: 40px;
   font-style: normal;
+  font-family: ${({theme}) => theme.fonts.bold};
 `;
 
 export const EntryText = styled.View`
