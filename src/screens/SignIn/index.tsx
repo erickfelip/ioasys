@@ -2,8 +2,9 @@ import { View, Text, Image } from "react-native";
 import React, { useState } from "react";
 import background from "../../../assets/background.png";
 import fundo from "../../../assets/fundo.png";
-import { Container, Title, Logo } from "./style";
+import { Container, Title, Logo, Form, TitleWrapper } from "./style";
 import { TextInput } from "../../../components/Input";
+import { KeyboardAvoidingView } from "react-native";
 
 export function SignIn() {
   const [username, setUsername] = useState("");
@@ -21,10 +22,14 @@ export function SignIn() {
           top: 0,
         }}
       />
-      <Logo>ioasys</Logo>
-      <Title>Books</Title>
-      <TextInput placeholder="USUARIO" />
-      <TextInput placeholder="PASSWORD" />
+      <TitleWrapper>
+        <Logo>ioasys</Logo>
+        <Title>Books</Title>
+      </TitleWrapper>
+      <Form>
+        <TextInput placeholder="USUARIO" />
+        <TextInput placeholder="PASSWORD" />
+      </Form>
     </Container>
   );
 }
