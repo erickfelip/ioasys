@@ -1,6 +1,5 @@
-import { View, Text, Image } from "react-native";
+import { Image } from "react-native";
 import React, { useState } from "react";
-import background from "../../../assets/background.png";
 import fundo from "../../../assets/fundo.png";
 import { Container, Title, Logo, Form, TitleWrapper } from "./style";
 import { TextInput } from "../../../components/Input";
@@ -9,6 +8,7 @@ import { Button } from "../../../components/Button";
 export function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
 
   return (
     <Container>
@@ -27,9 +27,18 @@ export function SignIn() {
         <Title>Books</Title>
       </TitleWrapper>
       <Form>
-        <TextInput placeholder="USUARIO" />
-        <TextInput placeholder="PASSWORD" secureTextEntry/>
-        <Button title="Entrar"/>
+        <TextInput
+          placeholder="USUARIO"
+          onChangeText={setUsername}
+          value={username}
+        />
+        <TextInput
+          placeholder="PASSWORD"
+          secureTextEntry
+          onChangeText={setPassword}
+          value={password}
+        />
+        <Button title="Entrar" />
       </Form>
     </Container>
   );

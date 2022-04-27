@@ -1,6 +1,8 @@
 import React from "react";
 import { SignIn } from "./src/screens/SignIn";
 import { ThemeProvider } from "styled-components/native";
+import { NavigationContainer } from "@react-navigation/native";
+import { AppRoutes } from "./src/routes/app.routes";
 import AppLoading from "expo-app-loading";
 import theme from "./src/global/styles/theme";
 
@@ -18,13 +20,15 @@ export default function App() {
     Heebo_600SemiBold,
   });
 
-if(!fontsLoaded){
-  return <AppLoading />
-}
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <ThemeProvider theme={theme}>
-      <SignIn />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
