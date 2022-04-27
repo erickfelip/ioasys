@@ -1,4 +1,4 @@
-import { Image } from "react-native";
+import { Image, Alert } from "react-native";
 import React, { useState } from "react";
 import fundo from "../../../assets/fundo.png";
 import {
@@ -14,6 +14,7 @@ import { Button } from "../../../components/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BlurView } from "expo-blur";
+import { requestSignIn } from "../../services/api";
 
 type RootStackParamList = {
   SingIn: undefined;
@@ -28,8 +29,20 @@ export function SignIn() {
 
   const navigation = useNavigation<authScreenProp>();
 
+  async function AuthSignIn(email: string, password: string) {
+    const userData = await requestSignIn(email, password);
+    return userData;
+  }
+
   async function handleSignIn() {
-    navigation.navigate("Home");
+    const userValidated = await AuthSignIn(username, password);
+    if (!userValidated) {
+      Alert.alert("Aviso", "Credenciais inválidas.");
+    } else {
+      navigation.reset({
+        routes: [{ name: "Home" }],
+      });
+    }
   }
 
   return (
