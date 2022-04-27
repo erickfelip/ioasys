@@ -13,6 +13,7 @@ import { TextInput } from "../../../components/Input";
 import { Button } from "../../../components/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { BlurView } from "expo-blur";
 
 type RootStackParamList = {
   SingIn: undefined;
@@ -48,12 +49,35 @@ export function SignIn() {
         <Title>Books</Title>
       </TitleWrapper>
       <Form>
-        <TextInput
-          placeholder="Email"
-          onChangeText={setUsername}
-          value={username}
+        <BlurView
+          intensity={80}
+          tint="dark"
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 5,
+            marginBottom: 15,
+          }}
+        >
+          <TextInput
+            placeholder="Email"
+            onChangeText={setUsername}
+            value={username}
           />
-          <SearchBook>
+        </BlurView>
+
+        {/*      <SearchBook> */}
+        <BlurView
+          intensity={80}
+          tint="dark"
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 5,
+          }}
+        >
           <TextInput
             placeholder="Senha"
             secureTextEntry
@@ -61,7 +85,8 @@ export function SignIn() {
             value={password}
           />
           <Button title="Entrar" onPress={handleSignIn} />
-        </SearchBook>
+        </BlurView>
+        {/*    </SearchBook> */}
       </Form>
     </Container>
   );
