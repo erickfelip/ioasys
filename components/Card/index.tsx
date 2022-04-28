@@ -11,14 +11,15 @@ import {
 } from "./style";
 import React from "react";
 import { Books } from "../../src/screens/Home";
+import { RectButtonProperties } from "react-native-gesture-handler";
 
-interface Props {
+interface Props extends RectButtonProperties {
   data: Books;
 }
 
-export function Card({ data }: Props) {
+export function Card({ data, ...rest }: Props) {
   return (
-    <Container>
+    <Container {...rest}>
       <CardImage source={{ uri: data.imageUrl }} />
       <Details>
         <Title>{data.title}</Title>

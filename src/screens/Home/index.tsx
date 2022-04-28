@@ -13,6 +13,16 @@ import {
 import { Card } from "../../../components/Card";
 import { fetchBooks } from "../../services/api";
 import { FlatList, StatusBar } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+type RootStackParamList = {
+  SingIn: undefined;
+  Home: undefined;
+  Details: undefined;
+};
+
+type authScreenProp = StackNavigationProp<RootStackParamList, "Details">;
 
 export interface Books {
   authors: string[];
@@ -30,11 +40,16 @@ export interface Books {
 }
 
 export function Home() {
+  const navigation = useNavigation<authScreenProp>();
   const [books, setBooks] = useState<Books[]>([]);
 
   async function dataBooks() {
     const dataSolicitaion = await fetchBooks();
     setBooks(dataSolicitaion.data);
+  }
+
+  function handleDetails() {
+    navigation.navigate("Details");
   }
 
   useEffect(() => {
@@ -61,9 +76,10 @@ export function Home() {
       </Header>
 
       <FlatList<Books>
+        style={{ padding: 18 }}
         data={books}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Card data={item} />}
+        renderItem={({ item }) => <Card data={item} onPress={handleDetails} />}
       />
     </Container>
   );
