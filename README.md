@@ -2,7 +2,7 @@
 
 Recriando a Interface do "ioasys Books" disponibilizada no **Figma**.
 
-## Clone o repositório e instale as dependecias
+## Clone o repositório e instale as dependencias
 
 Lembresse, para rodar a aplicação é necessario ter instalado o NodeJS, Yarn and Expo.
 
