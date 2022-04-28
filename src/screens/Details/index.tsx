@@ -17,45 +17,40 @@ import {
   DescriptionWrapper,
   Description,
   Informations,
+  ResumeTitle,
 } from "./style";
 import { Books } from "../../screens/Home";
+import { useRoute } from "@react-navigation/native";
 
-interface Props {
-  data: Books;
+interface Params {
+  book: Books;
 }
 
-export function Details({ data }: Props) {
+export function Details() {
+  const route = useRoute();
+  const { book } = route.params as Params;
+
   return (
     <Container>
-      <CardImage
-        source={{ uri: "https://d2drtqy2ezsot0.cloudfront.net/Book-9.jpg" }}
-      />
       <DetailsBook>
-        <Title>Teste</Title>
-        <Author>Teste</Author>
+        <CardImage source={{ uri: book.imageUrl }} />
+        <Title>{book.title}</Title>
+        <Author>{book.authors.join(", ")} </Author>
       </DetailsBook>
       <Information>
         <Informations>Informações</Informations>
-        <Pages>Oi</Pages>
-        <Editor>Oi</Editor>
-        <Published>Oi</Published>
-        <Idioma> Português </Idioma>
-        <OriginalTitle>Teste</OriginalTitle>
-        <Isbn10>2808474342</Isbn10>
-        <Isbn13>240-2808474342</Isbn13>
-        <Category> Crítica Literária</Category>
+        <Pages>{book.pageCount}</Pages>
+        <Editor>{book.publisher}</Editor>
+        <Published>{book.published}</Published>
+        <Idioma>{book.language}</Idioma>
+        <OriginalTitle>{book.title}</OriginalTitle>
+        <Isbn10>{book.isbn10}</Isbn10>
+        <Isbn13>240-{book.isbn13}</Isbn13>
+        <Category>{book.category}</Category>
       </Information>
-
       <DescriptionWrapper>
-        <Description>
-          {" "}
-          Saepe aut sint et nemo. Temporibus quis beatae fuga nulla. Quia
-          voluptates sit ex est eum doloremque ut. Consectetur alias qui numquam
-          ullam iure. Excepturi quo animi eius voluptas ut quo. Ea ea quis eaque
-          aut perspiciatis sed quis ipsam laboriosam.Suscipit rem beatae minus
-          sunt est laboriosam ut culpa. Magni qui dolorem et dolorem sunt
-          suscipit quia eos. At facere eveniet.
-        </Description>
+        <ResumeTitle>RESENHA DA EDITORA</ResumeTitle>
+        <Description>{book.description}</Description>
       </DescriptionWrapper>
     </Container>
   );

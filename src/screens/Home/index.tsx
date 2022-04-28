@@ -19,7 +19,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 type RootStackParamList = {
   SingIn: undefined;
   Home: undefined;
-  Details: undefined;
+  Details: any;
 };
 
 type authScreenProp = StackNavigationProp<RootStackParamList, "Details">;
@@ -48,8 +48,8 @@ export function Home() {
     setBooks(dataSolicitaion.data);
   }
 
-  function handleDetails() {
-    navigation.navigate("Details");
+  function handleDetails(book: Books) {
+    navigation.navigate("Details", { book });
   }
 
   useEffect(() => {
@@ -79,7 +79,9 @@ export function Home() {
         style={{ padding: 18 }}
         data={books}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Card data={item} onPress={handleDetails} />}
+        renderItem={({ item }) => (
+          <Card data={item} onPress={() => handleDetails(item)} />
+        )}
       />
     </Container>
   );

@@ -23,7 +23,7 @@ export function Card({ data, ...rest }: Props) {
       <CardImage source={{ uri: data.imageUrl }} />
       <Details>
         <Title>{data.title}</Title>
-        <Author>{data.authors.join(", ")}</Author>
+        <Author>{data.authors.join(", \n")}</Author>
         <About>
           <Pages>{`${data.pageCount} Páginas`}</Pages>
           <Editor>{`Editora ${data.publisher}`}</Editor>

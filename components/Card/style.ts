@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
 
 export const Container = styled(RectButton)`
-  width: 90%;
+  width: 100%;
   height: 160px;
   background-color: ${({ theme }) => theme.colors.white100};
   flex-direction: row;
@@ -14,6 +14,7 @@ export const Container = styled(RectButton)`
 
 export const Details = styled.View`
   margin-left: 20px;
+  margin-bottom: 20px;
 `;
 
 export const CardImage = styled.Image`
@@ -37,7 +38,6 @@ export const Author = styled.Text`
 
 export const About = styled.View`
   justify-content: center;
-  margin-top: 16px;
 `;
 
 export const Pages = styled.Text`
