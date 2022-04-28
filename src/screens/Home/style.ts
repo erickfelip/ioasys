@@ -1,9 +1,6 @@
 import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
-import { FlatList } from "react-native";
-import { CardDTO } from "../../dtos/CardDTO";
-import { Books } from "./index";
 
 export const Container = styled.View`
   flex: 1;
@@ -12,11 +9,13 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.homeBackground};
 `;
 export const Header = styled.View`
-  width: 85%;
+  width: 100%;
   height: 120px;
-  margin-top: 100px;
-  padding-top: -100px;
+  padding: 20px;
+  margin: 50px;
+  margin-top: 40px;
   background-color: ${({ theme }) => theme.colors.homeBackground};
+  align-items: center;
 `;
 
 export const Title = styled.Text`
@@ -41,7 +40,7 @@ export const TitleWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-right: 120px;
+  margin-bottom: 30px;
 `;
 
 export const Icon = styled(MaterialCommunityIcons)`
@@ -57,6 +56,8 @@ export const SearchBook = styled.View`
   justify-content: space-between;
   border-width: 0.5px;
   border-color: #000;
+  width: 90%;
+  padding-right: 10px;
 `;
 
 export const Search = styled(EvilIcons)`
