@@ -10,33 +10,23 @@ import {
   Published,
 } from "./style";
 import React from "react";
-
-interface CardData {
-  title: string;
-  authors: string;
-  about: {
-    pageCount: number;
-    publisher: string;
-    published: string;
-  };
-  thumbnail: string;
-}
+import { Books } from "../../src/screens/Home";
 
 interface Props {
-  data: CardData;
+  data: Books;
 }
 
 export function Card({ data }: Props) {
   return (
     <Container>
-      <CardImage source={{ uri: data.thumbnail }} />
+      <CardImage source={{ uri: data.imageUrl }} />
       <Details>
         <Title>{data.title}</Title>
-        <Author>{data.authors}</Author>
+        <Author>{data.authors.join(", ")}</Author>
         <About>
-          <Pages>{`${data.about.pageCount} Páginas`}</Pages>
-          <Editor>Editora loyola Teste </Editor>
-          <Published>Publicado em 2020</Published>
+          <Pages>{`${data.pageCount} Páginas`}</Pages>
+          <Editor>{`Editora ${data.publisher}`}</Editor>
+          <Published>{`Publicado em ${data.published}`}</Published>
         </About>
       </Details>
     </Container>

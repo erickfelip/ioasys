@@ -30,11 +30,6 @@ export function SignIn() {
 
   const navigation = useNavigation<authScreenProp>();
 
-  /*   async function AuthSignIn(email: string, password: string) {
-    const userData = await requestSignIn(email, password);
-    return userData;
-  } */
-
   async function handleSignIn() {
     const response = await requestSignIn(username, password);
     if (response && !response.data) {

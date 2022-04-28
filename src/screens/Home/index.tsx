@@ -8,16 +8,15 @@ import {
   Icon,
   SearchBook,
   Search,
-  BooksList,
   Header,
 } from "./style";
 import { Card } from "../../../components/Card";
 import { fetchBooks } from "../../services/api";
-import { StatusBar } from "react-native";
+import { FlatList, StatusBar } from "react-native";
 
-export type Books = {
+export interface Books {
   authors: string[];
-  category: string | any;
+  category: string;
   description: string;
   id: string;
   imageUrl: string;
@@ -28,27 +27,20 @@ export type Books = {
   published: number;
   publisher: string;
   title: string;
-};
+}
 
 export function Home() {
   const [books, setBooks] = useState<Books[]>([]);
-  const cardData = {
-    title: "Crossing the Chasm",
-    authors: "Geoffrey A. Moore",
-    about: {
-      pageCount: 600,
-      publisher: "Editora loyola",
-      published: "Publicado em 2020",
-    },
-    thumbnail: "https://d2drtqy2ezsot0.cloudfront.net/Book-7.jpg",
-  };
 
+  async function dataBooks() {
+    const dataSolicitaion = await fetchBooks();
+    setBooks(dataSolicitaion.data);
+  }
 
   useEffect(() => {
-    fetchBooks();
-  }, [books]);
+    dataBooks();
+  }, []);
 
-  
   return (
     <Container>
       <StatusBar
@@ -68,10 +60,10 @@ export function Home() {
         </SearchBook>
       </Header>
 
-      <BooksList
-        data={[1,2,3,4,5]}
-        keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => <Card data={cardData} />}
+      <FlatList<Books>
+        data={books}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Card data={item} />}
       />
     </Container>
   );

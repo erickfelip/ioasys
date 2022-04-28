@@ -7,7 +7,6 @@ const api = axios.create({
 
 api.interceptors.request.use(async (config) => {
   const token = await AsyncStorage.getItem("token");
-  console.log("@@@@", token);
   if (config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -17,18 +16,15 @@ api.interceptors.request.use(async (config) => {
 async function requestSignIn(email: string, password: string) {
   try {
     const response = await api.post("/auth/sign-in", { email, password });
-    console.log("POST API", response);
     return response;
   } catch (error) {}
 }
 
 async function fetchBooks() {
   try {
-    const response = await api.get("/books?page=1&amount=10");
-    /*  console.log("Livros da api", response); */
-    console.log("@@@");
-    console.log(response.data);
-
+    const response = await api.get("/books?page=1&amount=25");
+    console.log(response);
+    
     return response.data;
   } catch (error) {
     console.log(error);

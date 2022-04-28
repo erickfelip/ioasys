@@ -5,7 +5,6 @@ export const Container = styled.View`
   height: 160px;
   background-color: ${({ theme }) => theme.colors.white100};
   flex-direction: row;
-  justify-content: space-between;
   padding: 24px;
   margin-bottom: 16px;
   border-radius: 4px;
@@ -13,8 +12,7 @@ export const Container = styled.View`
 `;
 
 export const Details = styled.View`
-  padding-right: 100px;
- /*  margin-bottom: 1px; */
+  margin-left: 20px;
 `;
 
 export const CardImage = styled.Image`
@@ -42,19 +40,19 @@ export const About = styled.View`
 `;
 
 export const Pages = styled.Text`
-font-family: ${({ theme }) => theme.fonts.regular};
-color: ${({ theme }) => theme.colors.gray300};
-font-size: 12px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.gray300};
+  font-size: 12px;
 `;
 
 export const Editor = styled.Text`
-font-family: ${({ theme }) => theme.fonts.regular};
-color: ${({ theme }) => theme.colors.gray300};
-font-size: 12px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.gray300};
+  font-size: 12px;
 `;
 
 export const Published = styled.Text`
-font-family: ${({ theme }) => theme.fonts.regular};
-color: ${({ theme }) => theme.colors.gray300};
-font-size: 12px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.gray300};
+  font-size: 12px;
 `;

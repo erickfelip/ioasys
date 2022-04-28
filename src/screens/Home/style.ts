@@ -3,6 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { FlatList } from "react-native";
 import { CardDTO } from "../../dtos/CardDTO";
+import { Books } from "./index";
 
 export const Container = styled.View`
   flex: 1;
@@ -62,10 +63,3 @@ export const Search = styled(EvilIcons)`
   font-size: 24px;
   color: ${({ theme }) => theme.colors.gray100};
 `;
-
-export const BooksList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 24,
-  },
-  showsVerticalScrollIndicator: false,
-})``;
