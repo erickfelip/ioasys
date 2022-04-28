@@ -35,11 +35,3 @@ export const TitleWrapper = styled.View`
   padding-right: 170px;
   flex-direction: row;
 `;
-
-export const SearchBook = styled.View`
-  flex-direction: row;
-  /* padding-bottom: 10px; */
-  align-items: center;
-  border-width: 0.5px;
-  border-color: #000;
-`;

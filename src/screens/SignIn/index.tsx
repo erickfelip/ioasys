@@ -1,17 +1,10 @@
 import { Image, Alert } from "react-native";
 import React, { useState } from "react";
 import fundo from "../../../assets/fundo.png";
-import {
-  Container,
-  Title,
-  Logo,
-  Form,
-  TitleWrapper,
-  SearchBook,
-} from "./style";
+import { Container, Title, Logo, Form, TitleWrapper } from "./style";
 import { TextInput } from "../../../components/Input";
 import { Button } from "../../../components/Button";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BlurView } from "expo-blur";
 import { requestSignIn } from "../../services/api";
@@ -63,21 +56,19 @@ export function SignIn() {
           intensity={80}
           tint="dark"
           style={{
-            flexDirection: "row",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-start",
             borderRadius: 5,
             marginBottom: 15,
           }}
         >
           <TextInput
+            style={{ paddingLeft: 10 }}
             placeholder="Email"
             onChangeText={setUsername}
             value={username}
           />
         </BlurView>
-
-        {/*      <SearchBook> */}
         <BlurView
           intensity={80}
           tint="dark"
@@ -89,6 +80,7 @@ export function SignIn() {
           }}
         >
           <TextInput
+            style={{ paddingLeft: -20 }}
             placeholder="Senha"
             secureTextEntry
             onChangeText={setPassword}
@@ -96,7 +88,6 @@ export function SignIn() {
           />
           <Button title="Entrar" onPress={handleSignIn} />
         </BlurView>
-        {/*    </SearchBook> */}
       </Form>
     </Container>
   );

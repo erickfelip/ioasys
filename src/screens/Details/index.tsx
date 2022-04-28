@@ -18,11 +18,14 @@ import {
   Description,
   Informations,
   ResumeTitle,
+  Wrapper,
 } from "./style";
 import { Books } from "../../screens/Home";
 import { useRoute } from "@react-navigation/native";
+import { ScrollView } from "react-native";
+import { RectButtonProperties } from "react-native-gesture-handler";
 
-interface Params {
+interface Params extends RectButtonProperties {
   book: Books;
 }
 
@@ -32,26 +35,30 @@ export function Details() {
 
   return (
     <Container>
-      <DetailsBook>
-        <CardImage source={{ uri: book.imageUrl }} />
-        <Title>{book.title}</Title>
-        <Author>{book.authors.join(", ")} </Author>
-      </DetailsBook>
-      <Information>
-        <Informations>Informações</Informations>
-        <Pages>{book.pageCount}</Pages>
-        <Editor>{book.publisher}</Editor>
-        <Published>{book.published}</Published>
-        <Idioma>{book.language}</Idioma>
-        <OriginalTitle>{book.title}</OriginalTitle>
-        <Isbn10>{book.isbn10}</Isbn10>
-        <Isbn13>240-{book.isbn13}</Isbn13>
-        <Category>{book.category}</Category>
-      </Information>
-      <DescriptionWrapper>
-        <ResumeTitle>RESENHA DA EDITORA</ResumeTitle>
-        <Description>{book.description}</Description>
-      </DescriptionWrapper>
+      <ScrollView>
+        <Wrapper>
+          <DetailsBook>
+            <CardImage source={{ uri: book.imageUrl }} />
+            <Title>{book.title}</Title>
+            <Author>{book.authors.join(", ")} </Author>
+          </DetailsBook>
+          <Information>
+            <Informations>Informações</Informations>
+            <Pages>{`Páginas ${book.pageCount}`}</Pages>
+            <Editor>{`Editora ${book.publisher}`}</Editor>
+            <Published>{`Publicação ${book.published}`}</Published>
+            <Idioma>{`Idioma ${book.language}`}</Idioma>
+            <OriginalTitle>{`Título Original ${book.title}`}</OriginalTitle>
+            <Isbn10>{`ISBN-10 ${book.isbn10}`}</Isbn10>
+            <Isbn13>{`ISBN-13 ${book.isbn10}`}</Isbn13>
+            <Category>{`Categoria ${book.category}`}</Category>
+          </Information>
+          <DescriptionWrapper>
+            <ResumeTitle>RESENHA DA EDITORA</ResumeTitle>
+            <Description>{book.description}</Description>
+          </DescriptionWrapper>
+        </Wrapper>
+      </ScrollView>
     </Container>
   );
 }
