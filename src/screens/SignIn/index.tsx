@@ -15,6 +15,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { BlurView } from "expo-blur";
 import { requestSignIn } from "../../services/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type RootStackParamList = {
   SingIn: undefined;
@@ -29,16 +30,17 @@ export function SignIn() {
 
   const navigation = useNavigation<authScreenProp>();
 
-  async function AuthSignIn(email: string, password: string) {
+  /*   async function AuthSignIn(email: string, password: string) {
     const userData = await requestSignIn(email, password);
     return userData;
-  }
+  } */
 
   async function handleSignIn() {
-    const userValidated = await AuthSignIn(username, password);
-    if (!userValidated) {
+    const response = await requestSignIn(username, password);
+    if (response && !response.data) {
       Alert.alert("Aviso", "Credenciais inválidas.");
     } else {
+      AsyncStorage.setItem("token", response?.headers?.authorization || "");
       navigation.reset({
         routes: [{ name: "Home" }],
       });

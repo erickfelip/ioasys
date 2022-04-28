@@ -9,6 +9,7 @@ import theme from "./src/global/styles/theme";
 import {
   useFonts,
   Heebo_300Light,
+  Heebo_400Regular,
   Heebo_500Medium,
   Heebo_600SemiBold,
 } from "@expo-google-fonts/heebo";
@@ -16,6 +17,7 @@ import {
 export default function App() {
   const [fontsLoaded] = useFonts({
     Heebo_300Light,
+    Heebo_400Regular,
     Heebo_500Medium,
     Heebo_600SemiBold,
   });
