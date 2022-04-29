@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 export const Container = styled.View`
   flex: 1;
@@ -58,10 +59,23 @@ export const SearchBook = styled.View`
   border-color: ${({ theme }) => theme.colors.gray100};
   width: 80%;
   padding-right: 10px;
-  margin-right: 40px;
+  margin-right: 25px;
 `;
 
 export const Search = styled(EvilIcons)`
   font-size: 24px;
   color: ${({ theme }) => theme.colors.gray100};
+`;
+
+export const Filter = styled(Ionicons)`
+  font-size: 24px;
+  color: ${({ theme }) => theme.colors.black200};
+`;
+
+export const FilterWrapper = styled.View`
+  flex-direction: row;
+`;
+
+export const WrapperFilter = styled.View`
+  margin-top: 20px;
 `;

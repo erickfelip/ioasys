@@ -9,6 +9,9 @@ import {
   SearchBook,
   Search,
   Header,
+  Filter,
+  FilterWrapper,
+  WrapperFilter,
 } from "./style";
 import { Card } from "../../../components/Card";
 import { fetchBooks } from "../../services/api";
@@ -101,20 +104,26 @@ export function Home() {
             <Icon name="location-exit" />
           </TouchableOpacity>
         </TitleWrapper>
-        <SearchBook>
-          <SearchInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Procure um livro"
-            value={searchText}
-            onChangeText={(t) => handleSearch(t)}
-          />
-          <TouchableOpacity>
-            <Search name="search" />
-          </TouchableOpacity>
-        </SearchBook>
+        <FilterWrapper>
+          <SearchBook>
+            <SearchInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="Procure um livro"
+              value={searchText}
+              onChangeText={(t) => handleSearch(t)}
+            />
+            <TouchableOpacity>
+              <Search name="search" />
+            </TouchableOpacity>
+          </SearchBook>
+          <WrapperFilter>
+            <TouchableOpacity>
+              <Filter name="filter-outline" />
+            </TouchableOpacity>
+          </WrapperFilter>
+        </FilterWrapper>
       </Header>
-
       <FlatList<Books>
         style={{ padding: 18 }}
         data={searchText === "" ? books : listBooks}
