@@ -25,9 +25,11 @@ async function requestSignIn(email: string, password: string) {
   }
 }
 
-async function fetchBooks(searchText:string) {
+async function fetchBooks(searchText: string) {
   try {
-    const response = await api.get(`/books?page=1&amount=25&title${searchText}`);
+    const response = await api.get(
+      `/books?page=1&amount=25&title${searchText}`
+    );
     console.log(response);
     return response.data;
   } catch (error) {

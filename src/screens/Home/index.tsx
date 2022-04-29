@@ -67,14 +67,12 @@ export function Home() {
     });
   }
 
-  function handleSearch(t: string) {}
-
-  useEffect(() => {
-    dataBooks();
+  function handleSearch(t: string) {
+    setSearchText(t);
     if (searchText === "") {
       setBooks(books);
     } else {
-      setBooks(
+      setListBooks(
         books.filter((item) => {
           return (
             item.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1
@@ -82,7 +80,11 @@ export function Home() {
         })
       );
     }
-  }, [searchText]);
+  }
+
+  useEffect(() => {
+    dataBooks();
+  }, []);
 
   return (
     <Container>
@@ -101,9 +103,11 @@ export function Home() {
         </TitleWrapper>
         <SearchBook>
           <SearchInput
+            autoCapitalize="none"
+            autoCorrect={false}
             placeholder="Procure um livro"
             value={searchText}
-            onChangeText={(t) => setSearchText(t)}
+            onChangeText={(t) => handleSearch(t)}
           />
           <TouchableOpacity>
             <Search name="search" />
@@ -113,7 +117,7 @@ export function Home() {
 
       <FlatList<Books>
         style={{ padding: 18 }}
-        data={books}
+        data={searchText === "" ? books : listBooks}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Card data={item} onPress={() => handleDetails(item)} />
