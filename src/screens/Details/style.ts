@@ -16,6 +16,26 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.homeBackground};
 `;
 
+export const Static = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 30px;
+`;
+
+export const WrapperInformation = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  flex-direction: row;
+`;
+
+export const StaticText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: 12px;
+`;
+
 export const Wrapper = styled.View`
   flex: 1;
   justify-content: center;
@@ -49,36 +69,53 @@ export const Author = styled.Text`
 `;
 export const Information = styled.View`
   align-items: flex-end;
-  padding-left: 120px;
+  padding-left: 40px;
+  margin-right: 40px;
+`;
+
+export const InfoWrapper = styled.View`
+  width: 100%;
+  align-items: flex-start;
+  padding-left: 40px;
+  padding-top: 20px;
 `;
 
 export const Informations = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.light};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  align-items: flex-start;
 `;
 
 export const Pages = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Editor = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Published = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Idioma = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const OriginalTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Isbn10 = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Isbn13 = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const Category = styled.Text`
   font-family: ${({ theme }) => theme.fonts.light};
+  font-size: 12px;
 `;
 export const DescriptionWrapper = styled.View`
   justify-content: center;

@@ -19,6 +19,10 @@ import {
   Informations,
   ResumeTitle,
   Wrapper,
+  Static,
+  StaticText,
+  WrapperInformation,
+  InfoWrapper,
 } from "./style";
 import { Books } from "../../screens/Home";
 import { useRoute } from "@react-navigation/native";
@@ -42,17 +46,31 @@ export function Details() {
             <Title>{book.title}</Title>
             <Author>{book.authors.join(", ")} </Author>
           </DetailsBook>
-          <Information>
-            <Informations>Informações</Informations>
-            <Pages>{`Páginas ${book.pageCount}`}</Pages>
-            <Editor>{`Editora ${book.publisher}`}</Editor>
-            <Published>{`Publicação ${book.published}`}</Published>
-            <Idioma>{`Idioma ${book.language}`}</Idioma>
-            <OriginalTitle>{`Título Original ${book.title}`}</OriginalTitle>
-            <Isbn10>{`ISBN-10 ${book.isbn10}`}</Isbn10>
-            <Isbn13>{`ISBN-13 ${book.isbn10}`}</Isbn13>
-            <Category>{`Categoria ${book.category}`}</Category>
-          </Information>
+          <InfoWrapper>
+            <Informations>INFORMAÇÕES</Informations>
+          </InfoWrapper>
+          <WrapperInformation>
+            <Static>
+              <StaticText>Páginas</StaticText>
+              <StaticText>Editora</StaticText>
+              <StaticText>Publicação</StaticText>
+              <StaticText>Idioma</StaticText>
+              <StaticText>Título Original</StaticText>
+              <StaticText>ISBN-10</StaticText>
+              <StaticText>ISBN-13</StaticText>
+              <StaticText>Categoria</StaticText>
+            </Static>
+            <Information>
+              <Pages>{`${book.pageCount} páginas `}</Pages>
+              <Editor>{book.publisher}</Editor>
+              <Published>{book.published}</Published>
+              <Idioma>{book.language}</Idioma>
+              <OriginalTitle>{book.title}</OriginalTitle>
+              <Isbn10>{book.isbn10}</Isbn10>
+              <Isbn13>{book.isbn10}</Isbn13>
+              <Category>{book.category}</Category>
+            </Information>
+          </WrapperInformation>
           <DescriptionWrapper>
             <ResumeTitle>RESENHA DA EDITORA</ResumeTitle>
             <Description>{book.description}</Description>
