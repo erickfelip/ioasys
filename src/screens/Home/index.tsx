@@ -45,7 +45,6 @@ export interface Books {
   title: string;
 }
 
-
 export function Home() {
   const navigation = useNavigation<authScreenProp>();
   const [books, setBooks] = useState<Books[]>([]);
@@ -53,11 +52,11 @@ export function Home() {
   const [searchText, setSearchText] = useState("");
 
   async function dataBooks() {
-    const dataSolicitaion = await fetchBooks();
+    const dataSolicitaion = await fetchBooks(searchText);
     setBooks(dataSolicitaion.data);
   }
 
-  function handleDetails(book: Books) {
+  function handleDetails(book: Books): void {
     navigation.navigate("Details", { book });
   }
 
@@ -68,15 +67,14 @@ export function Home() {
     });
   }
 
-  useEffect(() => {
-    dataBooks();
-  }, [searchText]);
+  function handleSearch(t: string) {}
 
   useEffect(() => {
+    dataBooks();
     if (searchText === "") {
-      setListBooks(books);
+      setBooks(books);
     } else {
-      setListBooks(
+      setBooks(
         books.filter((item) => {
           return (
             item.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1
