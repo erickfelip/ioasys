@@ -23,25 +23,40 @@ import {
   StaticText,
   WrapperInformation,
   InfoWrapper,
+  Back,
 } from "./style";
 import { Books } from "../../screens/Home";
 import { useRoute } from "@react-navigation/native";
 import { ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { RectButtonProperties } from "react-native-gesture-handler";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../Home";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface Params extends RectButtonProperties {
   book: Books;
 }
 
+export type HomeProp = StackNavigationProp<RootStackParamList, "Home">;
+
 export function Details() {
   const route = useRoute();
   const { book } = route.params as Params;
+  const navigation = useNavigation<HomeProp>();
+
+  function handleGoBack() {
+    navigation.navigate("Home");
+  }
 
   return (
     <Container>
       <ScrollView>
         <Wrapper>
           <DetailsBook>
+            <TouchableOpacity onPress={handleGoBack}>
+              <Back name="arrow-back-circle-outline" />
+            </TouchableOpacity>
             <CardImage source={{ uri: book.imageUrl }} />
             <Title>{book.title}</Title>
             <Author>{book.authors.join(", ")} </Author>

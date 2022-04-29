@@ -1,12 +1,10 @@
 import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
 
-export const Icon = styled(Ionicons)`
+export const Back = styled(Ionicons)`
   font-size: 40px;
-  color: ${({ theme }) => theme.colors.gray100};
-  position: absolute;
-  padding: 40px;
-  align-items: flex-start;
+  color: ${({ theme }) => theme.colors.gray300};
+  margin-right: 340px;
 `;
 
 export const Container = styled.View`
@@ -50,7 +48,7 @@ export const CardImage = styled.Image`
 export const DetailsBook = styled.View`
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
 `;
 
 export const Title = styled.Text`

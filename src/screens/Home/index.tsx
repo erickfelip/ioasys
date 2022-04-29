@@ -18,13 +18,13 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-type RootStackParamList = {
+export type RootStackParamList = {
   SignIn: undefined;
   Home: undefined;
   Details: any;
 };
 
-type authScreenProp = StackNavigationProp<
+export type authScreenProp = StackNavigationProp<
   RootStackParamList,
   "Details",
   "SignIn"
@@ -45,7 +45,6 @@ export interface Books {
   title: string;
 }
 
-interface ListBooks {}
 
 export function Home() {
   const navigation = useNavigation<authScreenProp>();
