@@ -54,10 +54,11 @@ export const SearchBook = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-width: 0.5px;
-  border-color: #000;
-  width: 90%;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.gray100};
+  width: 80%;
   padding-right: 10px;
+  margin-right: 40px;
 `;
 
 export const Search = styled(EvilIcons)`

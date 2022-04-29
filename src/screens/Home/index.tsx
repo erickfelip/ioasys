@@ -15,14 +15,20 @@ import { fetchBooks } from "../../services/api";
 import { FlatList, StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type RootStackParamList = {
-  SingIn: undefined;
+  SignIn: undefined;
   Home: undefined;
   Details: any;
 };
 
-type authScreenProp = StackNavigationProp<RootStackParamList, "Details">;
+type authScreenProp = StackNavigationProp<
+  RootStackParamList,
+  "Details",
+  "SignIn"
+>;
 
 export interface Books {
   authors: string[];
@@ -39,9 +45,13 @@ export interface Books {
   title: string;
 }
 
+interface ListBooks {}
+
 export function Home() {
   const navigation = useNavigation<authScreenProp>();
   const [books, setBooks] = useState<Books[]>([]);
+  const [listBooks, setListBooks] = useState(books);
+  const [searchText, setSearchText] = useState("");
 
   async function dataBooks() {
     const dataSolicitaion = await fetchBooks();
@@ -52,9 +62,30 @@ export function Home() {
     navigation.navigate("Details", { book });
   }
 
+  async function handleLogout() {
+    await AsyncStorage.clear();
+    navigation.reset({
+      routes: [{ name: "SignIn" }],
+    });
+  }
+
   useEffect(() => {
     dataBooks();
-  }, []);
+  }, [searchText]);
+
+  useEffect(() => {
+    if (searchText === "") {
+      setListBooks(books);
+    } else {
+      setListBooks(
+        books.filter((item) => {
+          return (
+            item.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1
+          );
+        })
+      );
+    }
+  }, [searchText]);
 
   return (
     <Container>
@@ -67,11 +98,19 @@ export function Home() {
         <TitleWrapper>
           <Logo>ioasys</Logo>
           <Title>Books</Title>
-          <Icon name="location-exit" />
+          <TouchableOpacity onPress={handleLogout}>
+            <Icon name="location-exit" />
+          </TouchableOpacity>
         </TitleWrapper>
         <SearchBook>
-          <SearchInput placeholder="Procure um livro" />
-          <Search name="search" />
+          <SearchInput
+            placeholder="Procure um livro"
+            value={searchText}
+            onChangeText={(t) => setSearchText(t)}
+          />
+          <TouchableOpacity>
+            <Search name="search" />
+          </TouchableOpacity>
         </SearchBook>
       </Header>
 

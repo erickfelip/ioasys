@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { Alert } from "react-native";
 
 const api = axios.create({
   baseURL: "https://books.ioasys.com.br/api/v1",
@@ -17,14 +18,18 @@ async function requestSignIn(email: string, password: string) {
   try {
     const response = await api.post("/auth/sign-in", { email, password });
     return response;
-  } catch (error) {}
+  } catch (error) {
+    if (error instanceof Error) {
+      Alert.alert("Usuário ou senha inválida", "Não autorizado.");
+    }
+  }
 }
 
 async function fetchBooks() {
   try {
     const response = await api.get("/books?page=1&amount=25");
     console.log(response);
-    
+
     return response.data;
   } catch (error) {
     console.log(error);
